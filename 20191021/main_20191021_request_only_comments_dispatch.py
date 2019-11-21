@@ -88,7 +88,7 @@ def workData(posts):
         soup_post = BeautifulSoup(comment_r.text, 'lxml')
 
         # analysis post content
-        if comment_r.url.startswith('https://m.facebook.com/Vote4LGBT/photos'):
+        if comment_r.url.startwith('https://m.facebook.com/Vote4LGBT/photos'):
             p = soup_post.find('div', attrs={'class': 'msg'})
             p_content = "" if not p else p.text
         elif comment_r.url.startswith('https://m.facebook.com/events'):
