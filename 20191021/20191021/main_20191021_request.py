@@ -205,7 +205,7 @@ try:
             #
             #     soup = BeautifulSoup(comment_r.text, 'lxml')
             #
-            #     comments = soup.find_all('div', attrs={'id': re.compile('^[0-9]{15}$')})
+            #     comments = soup.find_all('div', attrs={'id': re.compile('^[0-9]{13,17}$')})
             #     print("评论数量: " + str(len(comments)))
             #
             #     for idx, comment in enumerate(comments):
@@ -222,7 +222,7 @@ try:
             #         print(str(idx) + '. ' + content)
             #         print('-' * 20)
             #
-            #     more_comments = soup.find('div', attrs={'id': re.compile('^see_next_[0-9]{15}$')})
+            #     more_comments = soup.find('div', attrs={'id': re.compile('^see_next_[0-9]{13,17}$')})
             #
             #     if more_comments:
             #         a = more_comments.find('a')
