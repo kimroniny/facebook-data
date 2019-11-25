@@ -53,14 +53,10 @@ url1 = 'https://m.facebook.com/Hope.family.tw/'
 with open('links/links.txt', 'r') as f:
     alls = f.readlines()
 
-with open('links/good_links.txt', 'r') as f:
-    goods = f.readlines()
-
-with open('links/bad_links.txt', 'r') as f:
-    bads = f.readlines()
-
-with open('links/rest_links.txt', 'r') as f:
-    rests = f.readlines()
+alls = [
+    'https://mbasic.facebook.com/events/260538601303260?view=permalink&id=260538604636593&p=60&av=100021735524497&eav=Afb02XXKcotMqPDiagxNmKCK31Ex3ON5QFNARfpXRy6JjXGwhLJHMdGIWCE9Hc_ykZQ',
+    'https://m.facebook.com/story.php?story_fbid=428479674324500&id=360009331171535'
+]
 
 session = requests.session()
 session.mount(host, DESAdapter())
@@ -88,7 +84,7 @@ def workData(posts):
         soup_post = BeautifulSoup(comment_r.text, 'lxml')
 
         # analysis post content
-        if comment_r.url.startwith('https://m.facebook.com/Vote4LGBT/photos'):
+        if comment_r.url.startswith('https://m.facebook.com/Vote4LGBT/photos'):
             p = soup_post.find('div', attrs={'class': 'msg'})
             p_content = "" if not p else p.text
         elif comment_r.url.startswith('https://m.facebook.com/events'):
@@ -171,7 +167,7 @@ def write_excel(posts, comments):
         sheet_post.write(count_post, 2, post[1])
         sheet_post.write(count_post, 3, post[2])
         count_post += 1
-    wb_post.save("result/posts.xls")
+    wb_post.save("result/event_posts.xls")
 
     for key, value in comments.items():
         for (idx, val) in value:
@@ -179,7 +175,7 @@ def write_excel(posts, comments):
             sheet_comment.write(count_comment, 1, idx)
             sheet_comment.write(count_comment, 2, val)
             count_comment += 1
-    wb_comment.save("result/comments.xls")
+    wb_comment.save("result/event_comments.xls")
 
 step = 3
 point = 0
