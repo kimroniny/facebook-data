@@ -1,6 +1,0 @@
-{
-    "crawl_user_url": "https://m.facebook.com/zuck?v=timeline",
-    "email": "kimroniny@163.com",
-    "password": "1aifacebook@",
-    "userids_limit": 200
-    }
